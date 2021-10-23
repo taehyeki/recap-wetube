@@ -1,0 +1,15 @@
+extend base
+
+block content 
+  if errMessage 
+    p=errMessage
+  form(method="post")
+    input(type="text" name='iden', required, placeholder='ID') 
+    input(type="password" name='password', required, placeholder='PASSWORD') 
+    input(type='submit' value='LOGIN')
+    br
+    a(href="/users/github/start") Continue with Github  &rarr;  
+    include partials/social-login
+  div.auth-switch
+    span Don't have an account? 
+    a(href="/join") Create one now &rarr; 

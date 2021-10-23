@@ -1,0 +1,8 @@
+extends base
+
+block content
+  form(method="post")
+    input(type="text", required, placeholder="Title", name='title', value=video.title)
+    textarea(name="description", cols="30", rows="10" placeholder="Description")=video.description
+    input(type="text", required, placeholder="Hashtags, seperated by comma", name='hashtags',value=video.hashtags.join())
+    input(type="submit", value="Upload Video")

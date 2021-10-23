@@ -1,0 +1,10 @@
+extends base
+
+block content 
+  if errMessage 
+    p=errMessage 
+  form(action="", method="post") 
+    input(type="password" name = 'oldpassword', placeholder='Old Password')
+    input(type="password" name ='newpassword', placeholder='New Password')
+    input(type="password" name= 'newpassword2', placeholder='Password Confirm')
+    input(type="submit" value='Change PW')
