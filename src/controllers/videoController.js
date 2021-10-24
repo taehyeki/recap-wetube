@@ -3,6 +3,8 @@ import User from "../models/User.js";
 import Comment from "../models/Comment";
 
 export const getUpload = (req, res) => {
+  res.header("Cross-Origin-Embedder-Policy", "require-corp");
+  res.header("Cross-Origin-Opener-Policy", "same-origin");
   res.render("upload", { pageTitle: "Upload Video" });
 };
 export const postUpload = async (req, res) => {
