@@ -32,10 +32,11 @@ export const postEdit = async (req, res) => {
       errMessage: "ID is already taken",
     });
   }
+  console.log(file);
   const editedUser = await User.findByIdAndUpdate(
     _id,
     {
-      avatarUrl: file ? file.path : avatarUrl,
+      avatarUrl: file ? file.location : avatarUrl,
       iden,
       email,
       name,

@@ -11,6 +11,11 @@ import apiRouter from "./Router/apiRouter.js";
 
 const server = express();
 const logger = morgan("dev");
+server.use((req, res, next) => {
+  res.header("Cross-Origin-Embedder-Policy", "require-corp");
+  res.header("Cross-Origin-Opener-Policy", "same-origin");
+  next();
+});
 server.set("view engine", "pug");
 server.set("views", process.cwd() + "/src/views");
 server.use(logger);
@@ -22,11 +27,7 @@ server.use(
     store: MongoStore.create({ mongoUrl: process.env.DB_URL }),
   })
 );
-server.use((req, res, next) => {
-  res.header("Cross-Origin-Embedder-Policy", "require-corp");
-  res.header("Cross-Origin-Opener-Policy", "same-origin");
-  next();
-});
+
 server.use(flash());
 server.use("/upload", express.static("upload"));
 server.use("/assets", express.static("assets"));
