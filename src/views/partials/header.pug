@@ -20,9 +20,9 @@ header
                         else
                             if loggedUser.avatarUrl
                                 if loggedUser.socialOnly
-                                    img.header__avatar(src=loggedUser.avatarUrl)
+                                    img.header__avatar(src=loggedUser.avatarUrl,crossorigin)
                                 else 
-                                    img.header__avatar(src="/"+loggedUser.avatarUrl)
+                                    img.header__avatar(src="/"+loggedUser.avatarUrl,crossorigin)
                             else 
                                 span 😀   
             else
