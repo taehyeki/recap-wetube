@@ -2,6 +2,8 @@ import Video from "../models/Video.js";
 import User from "../models/User.js";
 import bcrypt from "bcrypt";
 import fetch from "node-fetch";
+const isHeroku = process.env.NODE_ENV;
+
 export const getEdit = (req, res) => {
   res.render("edit-profile", { pageTitle: "Edit Profile" });
 };
@@ -36,7 +38,7 @@ export const postEdit = async (req, res) => {
   const editedUser = await User.findByIdAndUpdate(
     _id,
     {
-      avatarUrl: file ? file.location : avatarUrl,
+      avatarUrl: file ? (isHeroku ? file.location : file.path) : avatarUrl,
       iden,
       email,
       name,

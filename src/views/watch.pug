@@ -2,7 +2,10 @@ extends base
 
 block content  
   div#videoContainer(data-id=video.id)
-    video(src=video.videoUrl, crossorigin)  
+    if isHeroku
+      video(src=video.videoUrl, crossorigin)
+    else 
+      video(src='/'+video.videoUrl)
     div#videoControls.videoControls
       div.videoControls__play
         span#play.videoControls__playBtn

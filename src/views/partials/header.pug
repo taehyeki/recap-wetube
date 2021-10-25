@@ -19,8 +19,10 @@ header
                             span 😀
                         else
                             if loggedUser.avatarUrl
-                                img.header__avatar(src=loggedUser.avatarUrl,crossorigin)
-                           
+                                if isHeroku
+                                    img.header__avatar(src=loggedUser.avatarUrl,crossorigin)
+                                else 
+                                    img.header__avatar(src='/'+loggedUser.avatarUrl)
                             else 
                                 span 😀   
             else

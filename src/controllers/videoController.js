@@ -1,10 +1,9 @@
 import Video from "../models/Video.js";
 import User from "../models/User.js";
 import Comment from "../models/Comment";
+const isHeroku = process.env.NODE_ENV;
 
 export const getUpload = (req, res) => {
-  res.header("Cross-Origin-Embedder-Policy", "require-corp");
-  res.header("Cross-Origin-Opener-Policy", "same-origin");
   res.render("upload", { pageTitle: "Upload Video" });
 };
 export const postUpload = async (req, res) => {
@@ -17,8 +16,8 @@ export const postUpload = async (req, res) => {
   const { title, description, hashtags } = req.body;
   try {
     const newVideo = await Video.create({
-      videoUrl: video[0].location,
-      thumbUrl: thumb[0].location,
+      videoUrl: isHeroku ? video[0].location : video[0].path,
+      thumbUrl: isHeroku ? thumb[0].location : thumb[0].path,
       title,
       description,
       hashtags: Video.formatHashtags(hashtags),
