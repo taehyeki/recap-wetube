@@ -63,7 +63,7 @@ function forMatTime(time) {
   return ret;
 }
 
-function handleMetaDate() {
+function handleMetaData() {
   const total = Math.floor(video.duration);
   totalTime.innerText = forMatTime(total);
   timeline.max = total;
@@ -124,7 +124,7 @@ playBtn.addEventListener("click", handlePlayClick);
 mute.addEventListener("click", handleMute);
 
 volume.addEventListener("input", handleVolume);
-video.addEventListener("loadeddata", handleMetaDate);
+video.addEventListener("loadeddata", handleMetaData);
 video.addEventListener("timeupdate", handleTimeUpdate);
 
 timeline.addEventListener("input", handleTimeline);
